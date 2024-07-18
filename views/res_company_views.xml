@@ -1,0 +1,38 @@
+<odoo>
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="name">res.company.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <group>
+                <field name="company_code"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_company_tree" model="ir.ui.view">
+        <field name="name">res.company.tree</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="company_code"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_company_search" model="ir.ui.view">
+        <field name="name">res.company.search</field>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="company_code"/>
+
+                        <filter string="Company Code" name="company_code" domain="[('company_code', 'ilike', name)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>
